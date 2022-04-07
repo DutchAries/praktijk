@@ -31,8 +31,8 @@ public class Gebruiker_Endpoint {
 	private CheckinAssembler ca;
 	
 	@GetMapping
-	public Iterable<Gebruiker> alleGebruikers() {
-		return gs.alleGebruikers();
+	public Iterable<GebruikerDTO> alleGebruikers() {
+		return ga.alleGebruikerDTOs(gs.alleGebruikers());
 	}
 	
 	@PostMapping

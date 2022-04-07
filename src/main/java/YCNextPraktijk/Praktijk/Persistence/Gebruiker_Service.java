@@ -19,9 +19,26 @@ public class Gebruiker_Service {
 	@Autowired
 	private CheckinAssembler ca;
 	
+	//Met deze methode heeft de database ruimte voor 10000 gebruikers max.
+	//Uitbreiding zou zijn om deze unieke code per ingevulde display bij te houden.
+	//Dan zouden er 10000 gebruikers mogen zijn met dezelfde naam.
+	private String nextCode() {
+		long count = gr.count();
+		if (count < 10)
+			return "000"+count;
+		else if (count < 100)
+			return "00"+count;
+		else if (count < 1000)
+			return "0"+count;
+		else if (count < 10000)
+			return ""+count;
+		else
+			return "";
+	}
 	
 	public void slaGebruikerOp(Gebruiker geb) {
-		System.out.println("Adding user " + geb.getGebruikersNaam());
+		geb.setDisplayNaam(geb.getDisplayNaam()+"#"+nextCode());
+		System.out.println("Adding user " + geb.getDisplayNaam());
 		try {gr.save(geb);}
 		catch (DataIntegrityViolationException e) {
 			System.out.println(e);
