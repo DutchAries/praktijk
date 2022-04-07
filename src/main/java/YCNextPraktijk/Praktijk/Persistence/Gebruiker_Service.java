@@ -1,14 +1,11 @@
 package YCNextPraktijk.Praktijk.Persistence;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.stereotype.Service;
-
 import YCNextPraktijk.Praktijk.Model.CheckIn;
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
 import YCNextPraktijk.Praktijk.assembler.CheckinAssembler;
-import YCNextPraktijk.Praktijk.dto.CheckinDTO;
-import YCNextPraktijk.Praktijk.dto.GebruikerDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
