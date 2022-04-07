@@ -9,6 +9,7 @@ import YCNextPraktijk.Praktijk.Model.Gebruiker;
 import YCNextPraktijk.Praktijk.assembler.CheckinAssembler;
 import YCNextPraktijk.Praktijk.dto.CheckinDTO;
 import YCNextPraktijk.Praktijk.dto.GebruikerDTO;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class Gebruiker_Service {
@@ -35,7 +36,8 @@ public class Gebruiker_Service {
 	public long findGebruikerID(String naam) {
 		return gr.findByGebruikersNaam(naam).getId();
 	}
-	
+
+	@Transactional
 	public void deleteGebruiker(long id) {
 		System.out.println("Deleting user "+gr.findById(id).get().getGebruikersNaam());
 		for (CheckIn c : gr.findById(id).get().getCiList()) {
@@ -69,7 +71,7 @@ public class Gebruiker_Service {
 	public Gebruiker vindGebruiker(long id) {
 		return gr.findById(id).get();
 	}
-	
+
 	public Gebruiker vindGebruikerPerDisplayNaam(String dn) {
 		return gr.findByDisplayNaam(dn);
 	}

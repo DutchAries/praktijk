@@ -8,13 +8,14 @@ import org.springframework.stereotype.Component;
 
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
 import YCNextPraktijk.Praktijk.dto.GebruikerDTO;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class GebruikerAssembler {
 	
 	@Autowired 
-	private CheckinAssembler ca;
-	
+	private CheckinAssembler ca;  // unused?
+
 	public GebruikerDTO assemble (Gebruiker gebruiker) {
 		
 		GebruikerDTO dto = new GebruikerDTO();

@@ -32,7 +32,7 @@ public class CheckinAssembler {
 			DTOList.add(dto);
 		}
 	
-		return DTOList;		
+		return DTOList;		// variable names in Java start with lowercase (e.g. dtoList)
 	}
 	
 }
