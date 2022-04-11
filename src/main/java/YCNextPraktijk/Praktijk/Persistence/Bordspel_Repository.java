@@ -1,10 +1,9 @@
 package YCNextPraktijk.Praktijk.Persistence;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Component;
-
 import YCNextPraktijk.Praktijk.Model.Bordspel;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public interface Bordspel_Repository extends CrudRepository<Bordspel, Long> {
 }

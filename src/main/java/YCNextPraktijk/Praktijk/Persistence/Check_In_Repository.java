@@ -1,11 +1,10 @@
 package YCNextPraktijk.Praktijk.Persistence;
 
-import java.util.List;
-
+import YCNextPraktijk.Praktijk.Model.CheckIn;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
-import YCNextPraktijk.Praktijk.Model.CheckIn;
+import java.util.List;
 
 @Component
 public interface Check_In_Repository extends CrudRepository<CheckIn, Long> {

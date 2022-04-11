@@ -1,20 +1,19 @@
 package YCNextPraktijk.Praktijk.assembler;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import YCNextPraktijk.Praktijk.Model.Gebruiker;
+import YCNextPraktijk.Praktijk.dto.GebruikerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import YCNextPraktijk.Praktijk.Model.Gebruiker;
-import YCNextPraktijk.Praktijk.dto.GebruikerDTO;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class GebruikerAssembler {
 	
 	@Autowired 
-	private CheckinAssembler ca;
-	
+	private CheckinAssembler ca;  // unused?
+
 	public GebruikerDTO assemble (Gebruiker gebruiker) {
 		
 		GebruikerDTO dto = new GebruikerDTO();

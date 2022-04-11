@@ -18,8 +18,8 @@ import YCNextPraktijk.Praktijk.Persistence.Check_In_Service;
 public class Bordspel_Endpoint {
 
 	@Autowired
-	private Bordspel_Service bs; 
-	
+	private Bordspel_Service bs;
+
 	@Autowired
 	private Check_In_Service cs;
 	

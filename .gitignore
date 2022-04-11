@@ -1,4 +1,5 @@
 *.properties
+!application-integrationtest.properties
 /bin/
 HELP.md
 target/

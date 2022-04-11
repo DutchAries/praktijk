@@ -1,15 +1,5 @@
 package YCNextPraktijk.Praktijk.Rest;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import YCNextPraktijk.Praktijk.Model.CheckIn;
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
 import YCNextPraktijk.Praktijk.Persistence.Gebruiker_Service;
@@ -17,6 +7,9 @@ import YCNextPraktijk.Praktijk.assembler.CheckinAssembler;
 import YCNextPraktijk.Praktijk.assembler.GebruikerAssembler;
 import YCNextPraktijk.Praktijk.dto.CheckinDTO;
 import YCNextPraktijk.Praktijk.dto.GebruikerDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/gebruikers")
@@ -51,6 +44,7 @@ public class Gebruiker_Endpoint {
 	}
 	
 	@GetMapping("vind/{naam}")
+	@Transactional
 	public GebruikerDTO vindGebruiker(@PathVariable String naam) {
 		return ga.assemble(gs.vindGebruikerPerDisplayNaam(naam));
 	}
