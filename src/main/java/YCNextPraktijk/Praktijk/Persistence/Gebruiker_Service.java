@@ -36,8 +36,9 @@ public class Gebruiker_Service {
 			return "";
 	}
 	
+	//Tilde in plaats van hekje want fetch API doet moeilijk met # symbool
 	public void slaGebruikerOp(Gebruiker geb) {
-		geb.setDisplayNaam(geb.getDisplayNaam()+"#"+nextCode());
+		geb.setDisplayNaam(geb.getDisplayNaam()+"~"+nextCode());
 		System.out.println("Adding user " + geb.getDisplayNaam());
 		try {gr.save(geb);}
 		catch (DataIntegrityViolationException e) {
