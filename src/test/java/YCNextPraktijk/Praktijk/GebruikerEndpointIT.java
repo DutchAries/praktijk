@@ -15,7 +15,7 @@ import YCNextPraktijk.Praktijk.Model.Gebruiker;
 import YCNextPraktijk.Praktijk.Rest.Gebruiker_Endpoint;
 import YCNextPraktijk.Praktijk.dto.GebruikerDTO;
 
-@SpringBootTest//(classes = PraktijkApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @ActiveProfiles("integrationtest")
 public class GebruikerEndpointIT {
