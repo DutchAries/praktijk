@@ -7,6 +7,7 @@ public class CheckinDTO {
 	private Boolean win;
 	private Float rating;
 	private String review;
+	private String foto;
 	
 	public String getBordspel() {
 		return bordspel;
@@ -37,6 +38,12 @@ public class CheckinDTO {
 	}
 	public void setReview(String review) {
 		this.review = review;
+	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 	
 }

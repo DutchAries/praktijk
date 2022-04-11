@@ -19,6 +19,7 @@ public class CheckinAssembler {
 		dto.setRating(checkin.getRating());
 		dto.setReview(checkin.getReview());
 		dto.setWin(checkin.getWin());
+		dto.setFoto(checkin.getFoto());
 		
 		return dto;
 	}

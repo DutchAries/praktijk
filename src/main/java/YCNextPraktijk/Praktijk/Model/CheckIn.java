@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -22,6 +23,10 @@ public class CheckIn {
 	@Column(nullable=false)
 	private Float rating;
 	private String review;
+	
+	@Lob
+	@Column(length = 1000000000)
+	private String foto;
 	
 	@ManyToOne
     @JoinColumn(name = "gebruiker_id")
@@ -71,4 +76,10 @@ public class CheckIn {
 		this.review = review;
 	}
 	
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 }
