@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Gebruiker {
+public abstract class Gebruiker {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	
@@ -22,19 +22,11 @@ public class Gebruiker {
 	@Column(unique=true)
 	private String displayNaam;
 	private String beschrijving;
-	@OneToMany(mappedBy = "gebruiker")
-	private List<CheckIn> ciList;
-	//private String socialMedia;
 	private String profilePicture;
+	//private String socialMedia;
 	
 	public long getId() {
 		return id;
-	}
-	public List<CheckIn> getCiList() {
-		return ciList;
-	}
-	public void setCiList(List<CheckIn> ciList) {
-		this.ciList = ciList;
 	}
 	public void setId(long id) {
 		this.id = id;

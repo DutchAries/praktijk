@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
+import YCNextPraktijk.Praktijk.Model.PriveGebruiker;
 import YCNextPraktijk.Praktijk.dto.GebruikerDTO;
 
 @Component
@@ -21,7 +22,8 @@ public class GebruikerAssembler {
 		dto.setBeschrijving(gebruiker.getbeschrijving());
 		dto.setDisplayNaam(gebruiker.getDisplayNaam());
 		dto.setProfilePicture(gebruiker.getProfilePicture());
-		dto.setCheckins(ca.alleCheckinDTOs(gebruiker.getCiList()));
+		if (gebruiker instanceof PriveGebruiker)
+			dto.setCheckins(ca.alleCheckinDTOs(((PriveGebruiker)gebruiker).getCiList()));
 		
 		return dto;
 	}	

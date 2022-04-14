@@ -30,12 +30,12 @@ public class CheckIn {
 	
 	@ManyToOne
     @JoinColumn(name = "gebruiker_id")
-    private Gebruiker gebruiker;
+    private PriveGebruiker gebruiker;
 	
-	public Gebruiker getGebruiker() {
+	public PriveGebruiker getGebruiker() {
 		return gebruiker;
 	}
-	public void setGebruiker(Gebruiker gebruiker) {
+	public void setGebruiker(PriveGebruiker gebruiker) {
 		this.gebruiker = gebruiker;
 	}
 	

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import YCNextPraktijk.Praktijk.Model.CheckIn;
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
+import YCNextPraktijk.Praktijk.Model.PriveGebruiker;
 import YCNextPraktijk.Praktijk.Persistence.Gebruiker_Service;
 import YCNextPraktijk.Praktijk.assembler.CheckinAssembler;
 import YCNextPraktijk.Praktijk.assembler.GebruikerAssembler;
@@ -35,13 +36,13 @@ public class Gebruiker_Endpoint {
 		return gs.alleGebruikers();
 	}
 	
-	@PostMapping
-	public void nieuweGebruiker(@RequestBody Gebruiker geb) {
+	@PostMapping("prive")
+	public void nieuweGebruiker(@RequestBody PriveGebruiker geb) {
 		gs.slaGebruikerOp(geb);	
 	}
 
-	@PutMapping("{id}")
-	public void updateGebruiker(@RequestBody Gebruiker geb, @PathVariable long id) {
+	@PutMapping("prive/{id}")
+	public void updateGebruiker(@RequestBody PriveGebruiker geb, @PathVariable long id) {
 		gs.update(geb, id);
 	}
 	
