@@ -93,8 +93,8 @@ public class Gebruiker_Endpoint {
 		return ca.alleCheckinDTOs(gs.alleCheckins(id));	
 	}
 	
-	@PostMapping("newcheckin/{id}")
-	public void nieuweCheckin(@RequestBody CheckIn c, @PathVariable long id) {
-		gs.newCheckIn(id, c);
+	@PostMapping("newcheckin")
+	public void nieuweCheckin(@RequestBody CheckIn c, @RequestHeader("Authentication") Long ingelogdGebruikersId) {
+		gs.newCheckIn(ingelogdGebruikersId, c);
 	}
 }
