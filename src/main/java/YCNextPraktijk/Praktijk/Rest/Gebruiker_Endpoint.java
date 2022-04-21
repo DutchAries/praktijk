@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -54,8 +55,17 @@ public class Gebruiker_Endpoint {
 	}
 	
 	@DeleteMapping("{id}")
-	public void deleteGebruiker(@PathVariable long id) {
-		gs.deleteGebruiker(id);
+	public void deleteGebruiker(@PathVariable long id, @RequestHeader("Authentication") Long ingelogdGebruikersId ) {
+		// Als ingelogdGebruikersId ingevuld is vind die gebruiker
+		if (ingelogdGebruikersId != null) {
+			Gebruiker ingelogdGebruiker = gs.vindGebruiker(ingelogdGebruikersId);
+
+			// rechten checken zoals heeft diegene de juist rollen om te verwijderen
+
+			if (ingelogdGebruiker.getId() == id) {
+				gs.deleteGebruiker(id);
+			}
+		}
 	}
 	
 	@GetMapping("vind/{naam}")
