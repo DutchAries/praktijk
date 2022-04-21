@@ -94,7 +94,7 @@ public class Gebruiker_Endpoint {
 	}
 	
 	@PostMapping("newcheckin")
-	public void nieuweCheckin(@RequestBody CheckIn c, @RequestHeader("Authentication") Long ingelogdGebruikersId) {
+	public void nieuweCheckin(@RequestBody CheckIn c, @RequestHeader(value = "Authentication", defaultValue = "0", required = false) Long ingelogdGebruikersId) {
 		gs.newCheckIn(ingelogdGebruikersId, c);
 	}
 }
