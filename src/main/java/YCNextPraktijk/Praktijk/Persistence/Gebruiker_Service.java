@@ -1,5 +1,7 @@
 package YCNextPraktijk.Praktijk.Persistence;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -32,8 +34,18 @@ public class Gebruiker_Service {
 		return gr.findAll();
 	}
 	
-	public long findGebruikerID(String naam) {
-		return gr.findByGebruikersNaam(naam).getId();
+	public Optional<Gebruiker> login(String naam, String password) {
+		Optional<Gebruiker> optional = gr.findByGebruikersNaam(naam);
+
+		if (optional.isPresent()) {
+			Gebruiker gevondenGebruiker = optional.get();
+			
+			if (gevondenGebruiker.getWachtwoord().equals(password)) {
+				return optional;
+			}
+		}
+
+		return Optional.empty();
 	}
 	
 	public void deleteGebruiker(long id) {
@@ -70,7 +82,7 @@ public class Gebruiker_Service {
 		return gr.findById(id).get();
 	}
 	
-	public Gebruiker vindGebruikerPerDisplayNaam(String dn) {
+	public Optional<Gebruiker> vindGebruikerPerDisplayNaam(String dn) {
 		return gr.findByDisplayNaam(dn);
 	}
 	

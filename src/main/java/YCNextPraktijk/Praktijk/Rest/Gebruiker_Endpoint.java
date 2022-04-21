@@ -1,5 +1,7 @@
 package YCNextPraktijk.Praktijk.Rest;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,7 @@ import YCNextPraktijk.Praktijk.assembler.CheckinAssembler;
 import YCNextPraktijk.Praktijk.assembler.GebruikerAssembler;
 import YCNextPraktijk.Praktijk.dto.CheckinDTO;
 import YCNextPraktijk.Praktijk.dto.GebruikerDTO;
+import YCNextPraktijk.Praktijk.dto.LoginRequestDto;
 
 @RestController
 @RequestMapping("api/gebruikers")
@@ -57,12 +60,22 @@ public class Gebruiker_Endpoint {
 	
 	@GetMapping("vind/{naam}")
 	public GebruikerDTO vindGebruiker(@PathVariable String naam) {
-		return ga.assemble(gs.vindGebruikerPerDisplayNaam(naam));
+		return ga.assemble(gs.vindGebruikerPerDisplayNaam(naam).get());
 	}
 	
-	@GetMapping("login/{naam}")
-	public long login(@PathVariable String naam) {
-		return gs.findGebruikerID(naam);
+	@PostMapping("login")
+	public long login(@RequestBody LoginRequestDto loginRequestDto) {
+		Optional<Gebruiker> optional = gs.login(loginRequestDto.getGebruikersnaam(), loginRequestDto.getWachtwoord());
+		if (optional.isPresent()) {
+			// Gebruikers naam / Wahtwoord combinatie klopt
+			Gebruiker gebruiker = optional.get();
+
+			return gebruiker.getId(); 
+		} else {
+			// Gebruikers naam / Wahtwoord combinatie bestaat niet
+
+			return -1;
+		}
 	}
 	
 	@GetMapping("allecheckins/{id}")
