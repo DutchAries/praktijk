@@ -38,7 +38,7 @@ public class Gebruiker_Endpoint {
 	public Iterable<Gebruiker> alleGebruikers() {
 		return gs.alleGebruikers();
 	}
-	
+
 	@PostMapping
 	public void nieuweGebruiker(@RequestBody Gebruiker geb) {
 		gs.slaGebruikerOp(geb);	
@@ -48,12 +48,12 @@ public class Gebruiker_Endpoint {
 	public GebruikerDTO vindGebruikerBijId(@PathVariable long id) {
 		return ga.assemble(gs.vindGebruiker(id));
 	}
-	
+
 	@PutMapping("{id}")
 	public void updateGebruiker(@RequestBody Gebruiker geb, @PathVariable long id) {
 		gs.update(geb, id);
 	}
-	
+
 	@DeleteMapping("{id}")
 	public void deleteGebruiker(@PathVariable long id, @RequestHeader("Authentication") Long ingelogdGebruikersId ) {
 		// Als ingelogdGebruikersId ingevuld is vind die gebruiker
@@ -74,17 +74,17 @@ public class Gebruiker_Endpoint {
 	}
 	
 	@PostMapping("login")
-	public long login(@RequestBody LoginRequestDto loginRequestDto) {
+	public GebruikerDTO login(@RequestBody LoginRequestDto loginRequestDto) {
 		Optional<Gebruiker> optional = gs.login(loginRequestDto.getGebruikersnaam(), loginRequestDto.getWachtwoord());
 		if (optional.isPresent()) {
 			// Gebruikers naam / Wahtwoord combinatie klopt
 			Gebruiker gebruiker = optional.get();
 
-			return gebruiker.getId(); 
+			return ga.assemble(gebruiker);
 		} else {
 			// Gebruikers naam / Wahtwoord combinatie bestaat niet
 
-			return -1;
+			return null;
 		}
 	}
 	
