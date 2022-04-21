@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -25,6 +26,8 @@ public class Gebruiker {
 	@OneToMany(mappedBy = "gebruiker")
 	private List<CheckIn> ciList;
 	//private String socialMedia;
+	@Lob
+	@Column(length = 1000000000)
 	private String profilePicture;
 	
 	public long getId() {

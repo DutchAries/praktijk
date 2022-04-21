@@ -40,6 +40,11 @@ public class Gebruiker_Endpoint {
 		gs.slaGebruikerOp(geb);	
 	}
 
+	@GetMapping("{id}")
+	public GebruikerDTO vindGebruikerBijId(@PathVariable long id) {
+		return ga.assemble(gs.vindGebruiker(id));
+	}
+	
 	@PutMapping("{id}")
 	public void updateGebruiker(@RequestBody Gebruiker geb, @PathVariable long id) {
 		gs.update(geb, id);
