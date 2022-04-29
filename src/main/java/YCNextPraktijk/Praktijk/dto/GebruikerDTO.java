@@ -1,13 +1,19 @@
 package YCNextPraktijk.Praktijk.dto;
 
-import java.util.List;
-
 public class GebruikerDTO {
-	
+
+	private long gebruikersId;
 	private String displayNaam;
 	private String beschrijving;
 	private String profilePicture;
-	private Iterable<CheckinDTO> checkins;
+	
+	public long getGebruikersId() {
+		return gebruikersId;
+	}
+	
+	public void setGebruikersId(long gebruikersId) {
+		this.gebruikersId = gebruikersId;
+	}
 
 	public String getDisplayNaam() {
 		return displayNaam;
@@ -27,11 +33,4 @@ public class GebruikerDTO {
 	public void setProfilePicture(String profilePicture) {
 		this.profilePicture = profilePicture;
 	}
-	public Iterable<CheckinDTO> getCheckins() {
-		return checkins;
-	}
-	public void setCheckins(Iterable<CheckinDTO> checkins) {
-		this.checkins = checkins;
-	}
-	
 }
