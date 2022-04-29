@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import YCNextPraktijk.Praktijk.Model.CheckIn;
 import YCNextPraktijk.Praktijk.Model.Gebruiker;
 import YCNextPraktijk.Praktijk.assembler.CheckinAssembler;
-import YCNextPraktijk.Praktijk.dto.CheckinDTO;
+import YCNextPraktijk.Praktijk.assembler.GebruikerAssembler;
 import YCNextPraktijk.Praktijk.dto.GebruikerDTO;
 
 @Service
@@ -20,6 +20,8 @@ public class Gebruiker_Service {
 	private Check_In_Service cs;
 	@Autowired
 	private CheckinAssembler ca;
+	@Autowired
+	private GebruikerAssembler ga;
 	
 	
 	public void slaGebruikerOp(Gebruiker geb) {
@@ -30,8 +32,8 @@ public class Gebruiker_Service {
 		}
 	}
 	
-	public Iterable<Gebruiker> alleGebruikers() {
-		return gr.findAll();
+	public Iterable<GebruikerDTO> alleGebruikers() {
+		return ga.alleGebruikerDTOs(gr.findAll());
 	}
 	
 	public Optional<Gebruiker> login(String naam, String password) {
