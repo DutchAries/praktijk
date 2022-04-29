@@ -88,13 +88,13 @@ public class Gebruiker_Endpoint {
 		}
 	}
 	
-	@GetMapping("allecheckins/{id}")
-	public Iterable<CheckinDTO> alleCheckins(@PathVariable long id) {
-		return ca.alleCheckinDTOs(gs.alleCheckins(id));	
+	@GetMapping ("allecheckins")
+	public Iterable<CheckinDTO> alleCheckins(@RequestHeader("Authentication") Long ingelogdGebruikersId) {
+		return ca.alleCheckinDTOs(gs.alleCheckins(ingelogdGebruikersId));	
 	}
 	
 	@PostMapping("newcheckin")
-	public void nieuweCheckin(@RequestBody CheckIn c, @RequestHeader(value = "Authentication", defaultValue = "0", required = false) Long ingelogdGebruikersId) {
+	public void nieuweCheckin(@RequestBody CheckIn c, @RequestHeader("Authentication") Long ingelogdGebruikersId) {
 		gs.newCheckIn(ingelogdGebruikersId, c);
 	}
 }

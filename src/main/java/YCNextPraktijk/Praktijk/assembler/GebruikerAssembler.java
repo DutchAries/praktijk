@@ -22,7 +22,6 @@ public class GebruikerAssembler {
 		dto.setBeschrijving(gebruiker.getbeschrijving());
 		dto.setDisplayNaam(gebruiker.getDisplayNaam());
 		dto.setProfilePicture(gebruiker.getProfilePicture());
-		dto.setCheckins(ca.alleCheckinDTOs(gebruiker.getCiList()));
 		
 		return dto;
 	}	

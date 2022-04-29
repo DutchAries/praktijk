@@ -6,7 +6,6 @@ public class GebruikerDTO {
 	private String displayNaam;
 	private String beschrijving;
 	private String profilePicture;
-	private Iterable<CheckinDTO> checkins;
 	
 	public long getGebruikersId() {
 		return gebruikersId;
@@ -34,11 +33,4 @@ public class GebruikerDTO {
 	public void setProfilePicture(String profilePicture) {
 		this.profilePicture = profilePicture;
 	}
-	public Iterable<CheckinDTO> getCheckins() {
-		return checkins;
-	}
-	public void setCheckins(Iterable<CheckinDTO> checkins) {
-		this.checkins = checkins;
-	}
-	
 }
